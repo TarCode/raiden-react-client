@@ -28,6 +28,21 @@ class App extends Component {
             <code>Raiden address: </code>
           </p>
           {this.state.address}
+          <br/>
+          {
+            this.state.channels.length > 0 ?
+            <div>
+              <code>Channels:</code>
+              {
+                this.state.channels.map((c, i) => (
+                  <div key={i}>
+                    <h4>{c.toString()}</h4>
+                  </div>
+                ))
+              }
+            </div> :
+            null
+          }
         </header>
       </div>
     );
