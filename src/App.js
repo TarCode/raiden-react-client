@@ -3,22 +3,29 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  state = {
+    loading: false,
+    address: null
+  }
+  componentDidMount() {
+    this.setState({ loading: true })
+    fetch('http://localhost:3001/address', {
+      mode: 'cors'
+    })
+    .then(res => res.json())
+    .then(json => {
+      this.setState({ loading: false, address: json.our_address})
+    })
+    
+  }
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            <code>Raiden address: </code>
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          {this.state.address}
         </header>
       </div>
     );
