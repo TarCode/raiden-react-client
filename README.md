@@ -3,13 +3,6 @@
 
 This is a React app that connects to the [Raiden Express Server](https://github.com/TarCode/raiden-express-server)
 
-## Get started
-- Clone the repository
-- run `npm install`
-- Create a `.env` file and add `RAIDEN_CLIENT_URL=http://localhost:5001` (Replace `http://localhost:5001` with you Raiden client url)
-- Ensure your Raiden client has whitelisted the url the server is running on (`http://localhost:3001`), or you'll get a `cors` error
-
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
