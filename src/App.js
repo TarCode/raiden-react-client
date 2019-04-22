@@ -5,17 +5,19 @@ import './App.css';
 class App extends Component {
   state = {
     loading: false,
-    address: null
+    address: null,
+    channels: []
   }
-  componentDidMount() {
+
+  async componentDidMount() {
     this.setState({ loading: true })
-    fetch('http://localhost:3001/address', {
-      mode: 'cors'
-    })
-    .then(res => res.json())
-    .then(json => {
-      this.setState({ loading: false, address: json.our_address})
-    })
+    const res = await fetch('http://localhost:3001/address')
+    const address = await res.json();
+
+    const channel_res = await fetch('http://localhost:3001/channels')
+    const channels = await channel_res.json();
+
+    this.setState({ loading: false, address: address.our_address, channels })
     
   }
   render() {
